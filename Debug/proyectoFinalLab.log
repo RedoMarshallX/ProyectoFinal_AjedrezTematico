@@ -1,0 +1,28 @@
+﻿  proyectoFinal_laboratorio.cpp
+C:\Users\chaia\source\repos\proyectoFinalLab\proyectoFinalLab\proyectoFinal_laboratorio.cpp(186,24): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\chaia\source\repos\proyectoFinalLab\proyectoFinalLab\proyectoFinal_laboratorio.cpp(218,21): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
+C:\Users\chaia\source\repos\proyectoFinalLab\proyectoFinalLab\proyectoFinal_laboratorio.cpp(218,21): warning C4244:         with
+C:\Users\chaia\source\repos\proyectoFinalLab\proyectoFinalLab\proyectoFinal_laboratorio.cpp(218,21): warning C4244:         [
+C:\Users\chaia\source\repos\proyectoFinalLab\proyectoFinalLab\proyectoFinal_laboratorio.cpp(218,21): warning C4244:             T=float
+C:\Users\chaia\source\repos\proyectoFinalLab\proyectoFinalLab\proyectoFinal_laboratorio.cpp(218,21): warning C4244:         ]
+C:\Users\chaia\source\repos\proyectoFinalLab\proyectoFinalLab\proyectoFinal_laboratorio.cpp(219,21): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
+C:\Users\chaia\source\repos\proyectoFinalLab\proyectoFinalLab\proyectoFinal_laboratorio.cpp(219,21): warning C4244:         with
+C:\Users\chaia\source\repos\proyectoFinalLab\proyectoFinalLab\proyectoFinal_laboratorio.cpp(219,21): warning C4244:         [
+C:\Users\chaia\source\repos\proyectoFinalLab\proyectoFinalLab\proyectoFinal_laboratorio.cpp(219,21): warning C4244:             T=float
+C:\Users\chaia\source\repos\proyectoFinalLab\proyectoFinalLab\proyectoFinal_laboratorio.cpp(219,21): warning C4244:         ]
+C:\Users\chaia\source\repos\proyectoFinalLab\proyectoFinalLab\proyectoFinal_laboratorio.cpp(220,21): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
+C:\Users\chaia\source\repos\proyectoFinalLab\proyectoFinalLab\proyectoFinal_laboratorio.cpp(220,21): warning C4244:         with
+C:\Users\chaia\source\repos\proyectoFinalLab\proyectoFinalLab\proyectoFinal_laboratorio.cpp(220,21): warning C4244:         [
+C:\Users\chaia\source\repos\proyectoFinalLab\proyectoFinalLab\proyectoFinal_laboratorio.cpp(220,21): warning C4244:             T=float
+C:\Users\chaia\source\repos\proyectoFinalLab\proyectoFinalLab\proyectoFinal_laboratorio.cpp(220,21): warning C4244:         ]
+C:\Users\chaia\source\repos\proyectoFinalLab\proyectoFinalLab\proyectoFinal_laboratorio.cpp(359,44): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\chaia\source\repos\proyectoFinalLab\proyectoFinalLab\proyectoFinal_laboratorio.cpp(363,45): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\chaia\source\repos\proyectoFinalLab\proyectoFinalLab\proyectoFinal_laboratorio.cpp(367,41): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\chaia\source\repos\proyectoFinalLab\proyectoFinalLab\proyectoFinal_laboratorio.cpp(371,42): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\chaia\source\repos\proyectoFinalLab\proyectoFinalLab\proyectoFinal_laboratorio.cpp(430,11): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\chaia\source\repos\proyectoFinalLab\proyectoFinalLab\proyectoFinal_laboratorio.cpp(431,11): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\chaia\source\repos\proyectoFinalLab\proyectoFinalLab\proyectoFinal_laboratorio.cpp(435,18): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\chaia\source\repos\proyectoFinalLab\proyectoFinalLab\proyectoFinal_laboratorio.cpp(436,18): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\chaia\source\repos\proyectoFinalLab\proyectoFinalLab\proyectoFinal_laboratorio.cpp(438,10): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\chaia\source\repos\proyectoFinalLab\proyectoFinalLab\proyectoFinal_laboratorio.cpp(439,10): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+  proyectoFinalLab.vcxproj -> C:\Users\chaia\source\repos\proyectoFinalLab\Debug\proyectoFinalLab.exe
