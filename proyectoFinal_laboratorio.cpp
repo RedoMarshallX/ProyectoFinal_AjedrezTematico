@@ -152,7 +152,7 @@ int main()
 
 	// ########## CARGA DE MODELOS ##########
 	
-	//Model Dog((char*)"Models/RedDog.obj");
+	Model Dog((char*)"Models/RedDog.obj");
 	Model Tablero((char*)"Models/tablero.obj");
 	Model Lavadora((char*)"Models/44-lavadora.obj");
 
@@ -224,8 +224,8 @@ int main()
 		glUniform3f(glGetUniformLocation(lightingShader.Program, "pointLights[0].diffuse"), lightColor.x, lightColor.y, lightColor.z);
 		glUniform3f(glGetUniformLocation(lightingShader.Program, "pointLights[0].specular"), 1.0f, 1.0f, 1.0f);
 		glUniform1f(glGetUniformLocation(lightingShader.Program, "pointLights[0].constant"), 1.0f);
-		glUniform1f(glGetUniformLocation(lightingShader.Program, "pointLights[0].linear"), 0.045f);
-		glUniform1f(glGetUniformLocation(lightingShader.Program, "pointLights[0].quadratic"), 0.075f);
+		glUniform1f(glGetUniformLocation(lightingShader.Program, "pointLights[0].linear"), 0.0f);
+		glUniform1f(glGetUniformLocation(lightingShader.Program, "pointLights[0].quadratic"), 0.0f);
 
 		// Point light 2
 		glUniform3f(glGetUniformLocation(lightingShader.Program, "pointLights[1].position"), pointLightPositions[1].x, pointLightPositions[1].y, pointLightPositions[1].z);
@@ -288,17 +288,176 @@ int main()
 		view = camera.GetViewMatrix();
 
 		// ========== CARGA DE MODELOS ==========
-		// 1-TABLERO
+		//TABLERO
 		model = glm::mat4(1);
 		model = glm::translate(model, glm::vec3(0.0f, -4.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.5f, 1.0f, 0.5f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		Tablero.Draw(lightingShader);
 
-		//2-LAVADORA
+		// ########## EQUIPO: Minecraft ##########
+
+		//TORRE 1 Minecraft (Modelo: Creeper)
 		model = glm::mat4(1);
 		model = glm::translate(model, glm::vec3(-28.0f, -0.8f, -28.0f));
 		model = glm::rotate(model, glm::radians(270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(4.0f, 4.0f, 4.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Dog.Draw(lightingShader);
+
+		//CABALLO 1 Minecraft (Modelo: Araña)
+		model = glm::mat4(1);
+		model = glm::translate(model, glm::vec3(-20.0f, -0.8f, -28.0f));
+		model = glm::rotate(model, glm::radians(270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Dog.Draw(lightingShader);
+
+		//ALFIL 1 Minecraft (Modelo: Esqueleto)
+		model = glm::mat4(1);
+		model = glm::translate(model, glm::vec3(-12.0f, -0.8f, -28.0f));
+		model = glm::rotate(model, glm::radians(270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Dog.Draw(lightingShader);
+
+		//REY Minecraft (Modelo: Steve)
+		model = glm::mat4(1);
+		model = glm::translate(model, glm::vec3(-4.0f, -0.8f, -28.0f));
+		model = glm::rotate(model, glm::radians(270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Dog.Draw(lightingShader);
+
+		//REINA Minecraft (Modelo: Alex)
+		model = glm::mat4(1);
+		model = glm::translate(model, glm::vec3(4.0f, -0.8f, -28.0f));
+		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Dog.Draw(lightingShader);
+
+		//ALFIL 2 Minecraft (Modelo: Esqueleto)
+		model = glm::mat4(1);
+		model = glm::translate(model, glm::vec3(12.0f, -0.8f, -28.0f));
+		model = glm::rotate(model, glm::radians(270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Dog.Draw(lightingShader);
+
+		//CABALLO 2 Minecraft (Modelo: Araña)
+		model = glm::mat4(1);
+		model = glm::translate(model, glm::vec3(20.0f, -0.8f, -28.0f));
+		model = glm::rotate(model, glm::radians(270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Dog.Draw(lightingShader);
+
+		//TORRE 2 Minecraft (Modelo: Creeper)
+		model = glm::mat4(1);
+		model = glm::translate(model, glm::vec3(28.0f, -0.8f, -28.0f));
+		model = glm::rotate(model, glm::radians(270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Dog.Draw(lightingShader);
+
+		//PEON 1 Minecraft (Modelo: Zombie)
+		model = glm::mat4(1);
+		model = glm::translate(model, glm::vec3(-28.0f, -0.8f, -20.0f));
+		model = glm::rotate(model, glm::radians(270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Dog.Draw(lightingShader);
+
+		//PEON 2 Minecraft (Modelo: Zombie)
+		model = glm::mat4(1);
+		model = glm::translate(model, glm::vec3(-20.0f, -0.8f, -20.0f));
+		model = glm::rotate(model, glm::radians(270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Dog.Draw(lightingShader);
+
+		//Poner los demás peones
+
+		// ########## EQUIPO: Plants vs Zombies ##########
+
+		//TORRE 1 PVZ (Modelo: Nuez cascarrabias)
+		model = glm::mat4(1);
+		model = glm::translate(model, glm::vec3(28.0f, -0.8f, 28.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Lavadora.Draw(lightingShader);
+
+		//CABALLO 1 PVZ (Modelo: Carnivora)
+		model = glm::mat4(1);
+		model = glm::translate(model, glm::vec3(20.0f, -0.8f, 28.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Lavadora.Draw(lightingShader);
+
+		//ALFIL 1 PVZ (Modelo: Cactus)
+		model = glm::mat4(1);
+		model = glm::translate(model, glm::vec3(12.0f, -0.8f, 28.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Lavadora.Draw(lightingShader);
+
+		//REINA PVZ (Modelo: Girasol)
+		model = glm::mat4(1);
+		model = glm::translate(model, glm::vec3(4.0f, -0.8f, 28.0f));
+		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Lavadora.Draw(lightingShader);
+
+		//REY PVZ (Modelo: Fred)
+		model = glm::mat4(1);
+		model = glm::translate(model, glm::vec3(-4.0f, -0.8f, 28.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Lavadora.Draw(lightingShader);
+
+		//ALFIL 2 PVZ (Modelo: Cactus)
+		model = glm::mat4(1);
+		model = glm::translate(model, glm::vec3(-12.0f, -0.8f, 28.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Lavadora.Draw(lightingShader);
+
+		//CABALLO 2 PVZ (Modelo: Carnivora)
+		model = glm::mat4(1);
+		model = glm::translate(model, glm::vec3(-20.0f, -0.8f, 28.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Lavadora.Draw(lightingShader);
+
+		//TORRE 2 PVZ (Modelo: Nuez cascarrabias)
+		model = glm::mat4(1);
+		model = glm::translate(model, glm::vec3(-28.0f, -0.8f, 28.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Lavadora.Draw(lightingShader);
+
+		//PEON 1 PVZ (Modelo: Lanzaguisantes)
+		model = glm::mat4(1);
+		model = glm::translate(model, glm::vec3(28.0f, -0.8f, 20.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Lavadora.Draw(lightingShader);
+
+		//PEON 2 PVZ (Modelo: Lanzaguisantes)
+		model = glm::mat4(1);
+		model = glm::translate(model, glm::vec3(20.0f, -0.8f, 20.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		Lavadora.Draw(lightingShader);
 
