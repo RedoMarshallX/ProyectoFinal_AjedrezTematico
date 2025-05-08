@@ -66,6 +66,10 @@ bool usePerspective = true; // true = perspectiva, false = ortogonal
 // Atributos de la iluminación
 glm::vec3 lightPos(0.0f, 0.0f, 0.0f);   // Posición de la lámpara principal
 bool active;							// Control para encender/apagar luz dinámica
+float brazoSteveAngle = 0.0f;			// Ángulo del brazo derecho de Steve
+float rotSteveY = 0.0f;     // Rotación del cuerpo de Steve (eje Y)
+float rotManzanaY = 0.0f;   // Rotación de la manzana (eje Y)
+
 
 // Posiciones de las luces puntuales
 glm::vec3 pointLightPositions[] = {
@@ -179,7 +183,11 @@ int main()
 
 	// EQUIPO: Minecraft
 	Model Zombie((char*)"Models/zombie.obj");
-	Model Steve((char*)"Models/steve.obj");
+	//Model Steve((char*)"Models/steve.obj");
+	Model Steve((char*)"Models/steve2.obj");
+	Model BrazoSteve((char*)"Models/brazosteve.obj");
+	Model ManzanaSteve((char*)"Models/manzana.obj");
+
 	Model Alex((char*)"Models/alex.obj");
 	Model Esqueleto((char*)"Models/Esqueleto.obj");
 	Model Slime((char*)"Models/slime.obj");
@@ -340,7 +348,7 @@ int main()
 		DrawModel(Creeper, glm::vec3(-28.0f, 1.0f, -28.0f), 270.0f, glm::vec3(2.5f), modelLoc, lightingShader);					// TORRE 1
 		DrawModel(Slime, glm::vec3(-20.0f, -2.0f, -28.0f), 270.0f, glm::vec3(1.0f), modelLoc, lightingShader);					// CABALLO 1
 		DrawModel(Esqueleto, glm::vec3(-12.0f, 1.0f, -28.0f), 270.0f, glm::vec3(2.5f, 3.0f, 2.5f), modelLoc, lightingShader);	// ALFIL 1
-		DrawModel(Steve, glm::vec3(-4.0f, -1.6f, -28.0f), 270.0f, glm::vec3(1.0f), modelLoc, lightingShader);					// REY
+		//DrawModel(Steve, glm::vec3(-4.0f, -1.6f, -28.0f), 270.0f, glm::vec3(1.0f), modelLoc, lightingShader);					// REY
 		DrawModel(Alex, glm::vec3(4.0f, -1.6f, -28.0f), 270.0f, glm::vec3(1.0f), modelLoc, lightingShader);						// REINA
 		DrawModel(Esqueleto, glm::vec3(12.0f, 1.0f, -28.0f), 270.0f, glm::vec3(2.5f, 3.0f, 2.5f), modelLoc, lightingShader);	// ALFIL 2
 		DrawModel(Slime, glm::vec3(20.0f, -2.0f, -28.0f), 270.0f, glm::vec3(1.0f), modelLoc, lightingShader);					// CABALLO 2
@@ -355,7 +363,6 @@ int main()
 		for (float x : posicionesX_Mine) {
 			DrawModel(Zombie, glm::vec3(x, peonY_Mine, peonZ_Mine), 270.0f, escalaPeonMine, modelLoc, lightingShader);
 		}
-
 
 		// ########## EQUIPO: Plants vs Zombies ##########
 
@@ -388,6 +395,29 @@ int main()
 		//Dog.Draw(lightingShader);
 		//glDisable(GL_BLEND);  //Desactiva el canal alfa //--Descomentar
 		//glBindVertexArray(0); //Sepa la bola
+
+
+
+		// ########## EJERCICIO: Modelado jerarquico ##########
+
+		glm::mat4 modelSteve = glm::mat4(1.0f);
+		modelSteve = glm::translate(modelSteve, glm::vec3(-4.0f, -1.6f, -28.0f));			// posición global
+		modelSteve = glm::rotate(modelSteve, glm::radians(rotSteveY + 270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(modelSteve));
+		Steve.Draw(lightingShader);
+
+		glm::mat4 modelBrazo = modelSteve;										// Hereda transformaciones del cuerpo
+		modelBrazo = glm::translate(modelBrazo, glm::vec3(0.0f, 0.0f, 0.0f));	// posición del brazo con respecto a Steve
+		modelBrazo = glm::rotate(modelBrazo, glm::radians(brazoSteveAngle), glm::vec3(0.0f, 0.0f, 1.0f)); // control manual
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(modelBrazo));
+		BrazoSteve.Draw(lightingShader);
+
+		glm::mat4 modelManzana = modelBrazo;										// Hereda transformaciones del brazo
+		modelManzana = glm::translate(modelManzana, glm::vec3(0.0f, -0.4f, 0.2f)); // posición relativa a la mano
+		modelManzana = glm::rotate(modelManzana, glm::radians(rotManzanaY), glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(modelManzana));
+		ManzanaSteve.Draw(lightingShader);
+
 
 		// Also draw the lamp object, again binding the appropriate shader
 		lampShader.Use();
@@ -471,6 +501,33 @@ void DoMovement()
 	if (keys[GLFW_KEY_J]){
 		pointLightPositions[0].z += 0.01f;
 	}
+
+	if (keys[GLFW_KEY_3]) {
+		brazoSteveAngle += deltaTime * 50.0f; // Aumenta ángulo
+		if (brazoSteveAngle > 90.0f) brazoSteveAngle = 90.0f;
+	}
+
+	if (keys[GLFW_KEY_4]) {
+		brazoSteveAngle -= deltaTime * 50.0f; // Disminuye ángulo
+		if (brazoSteveAngle < -45.0f) brazoSteveAngle = -45.0f;
+	}
+
+	// Rotar Steve
+	if (keys[GLFW_KEY_5]) {
+		rotSteveY += deltaTime * 50.0f;
+	}
+	if (keys[GLFW_KEY_6]) {
+		rotSteveY -= deltaTime * 50.0f;
+	}
+
+	// Rotar Manzana
+	if (keys[GLFW_KEY_7]) {
+		rotManzanaY += deltaTime * 50.0f;
+	}
+	if (keys[GLFW_KEY_8]) {
+		rotManzanaY -= deltaTime * 50.0f;
+	}
+
 
 }
 
